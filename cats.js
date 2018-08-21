@@ -8,7 +8,7 @@ Vue.component('todo-item', {
   template: '<div>'+
     '<input type="checkbox" v-model="todo.completed">'+
     '<span>{{ todo.text }}</span>' +
-    '<button type="button" v-on:click="onClickRemove">よその子やんけ</button>' +
+    '<button type="button" v-on:click="onClickRemove">見回りに行かせる</button>' +
   '</div>',
 
   methods:{
