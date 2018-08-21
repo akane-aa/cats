@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+
+  <div id="app">
+    <h1>猫</h1>
+
+<!--step1-->
+    <label v-for="label in options">
+      <input type="radio"
+      v-model="current"
+      v-bind:value="label.value">{{ label.label }}
+    </label>
+
+    <!--step12-->
+    {{ computedTodos.length }} 件を表示中
+
+    <!--step4 リスト用テーブル-->
+    <table>
+      <thead v-pre>
+        <tr>
+          <th class="id">ID</th>
+          <th class="comment">コメント</th>
+          <th class="state">状態</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+        v-for="item in computedTodos"
+        v-bind:key="item.id"
+        v-bind:class="{done:item.state}">
+        <th>{{ item.id }}</th>
+        <td>{{ item.comment }}</td>
+        <td class="state">
+            <!--step10-->
+            <button v-on:click="doChangeState(item)">
+              {{ labels[item.state] }}
+            </button>
+          </td>
+          <td class="button">
+            <!--step10-->
+            <button v-on:click.shift="doRemove(item)">
+              削除
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>なんかいい感じに、、</p>
+
+    <!--step6-->
+    <h2>新しい作業の追加</h2>
+    <form class="add-form" v-on:submit.prevent="doAdd">
+      <!--コメント入力フォーム-->
+      コメント<input type="text" ref="comment">
+      <!--追加ボタン-->
+      <button type="submit">追加</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html　lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>vue.jsの猫リスト</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--とりあえずcssは保留で-->
+</head>
+<body>
+  <h1 style="color:blue;">うちの子のリスト</h1>
+  <p>うちの子isかわいい<br>間違いないな？</p>
+
+  <div id="app">
+    <ul>
+      <li v-for="(todo, index) in todos">
+      <todo-item v-bind:todo="todo" v-on:remove="todos.splice(index, 1)"></todo-item>
+      </li>
+    </ul>
+    <div>
+      <input type="text" v-model="input">
+      <button type="button" v-on:click="addTodo">うちの子にする</button>
+      <!-- <button type="button" v-on:click="onclickRemove">うちの子じゃない、、</button> -->
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src=cats.js></script>
+</body>
+</html>
